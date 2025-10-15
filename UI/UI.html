@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间都去哪里了 - UI设计展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f6f6f6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        
+        .ui-container {
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .ui-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .ui-frame {
+            width: 400px;
+            height: 850px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            background: #f6f6f6;
+            overflow: hidden;
+        }
+        
+        .ui-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+        }
+        
+        .header p {
+            font-size: 20px;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-container">
+        <!-- 头部标题 -->
+        <div class="header">
+            <h1>时间都去哪里了</h1>
+            <p>手机使用时间统计APP UI设计展示</p>
+        </div>
+        
+        <!-- UI展示网格 -->
+        <div class="ui-grid">
+            <!-- 首页 -->
+            <div>
+                <div class="ui-title">首页 - 今日概览</div>
+                <iframe src="首页.html" class="ui-frame"></iframe>
+            </div>
+            
+            <!-- 统计页面 -->
+            <div>
+                <div class="ui-title">统计页面 - 数据分析</div>
+                <iframe src="统计页面.html" class="ui-frame"></iframe>
+            </div>
+            
+            <!-- 应用管理页面 -->
+            <div>
+                <div class="ui-title">应用管理 - 应用列表</div>
+                <iframe src="应用管理页面.html" class="ui-frame"></iframe>
+            </div>
+            
+            <!-- 提醒设置页面 -->
+            <div>
+                <div class="ui-title">提醒设置 - 配置提醒</div>
+                <iframe src="提醒设置页面.html" class="ui-frame"></iframe>
+            </div>
+            
+            <!-- 历史数据页面 -->
+            <div>
+                <div class="ui-title">历史数据 - 数据回顾</div>
+                <iframe src="历史数据页面.html" class="ui-frame"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

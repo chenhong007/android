@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间都去哪了 - 高保真原型展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .prototype-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+            position: relative;
+            margin: 0 auto;
+        }
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            z-index: 10;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #000;
+        }
+        .page-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 32px;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            padding: 40px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .page-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .page-info h3 {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .page-info p {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部介绍 -->
+    <div class="header">
+        <h1>时间都去哪了</h1>
+        <p>手机使用时间统计APP - 高保真原型展示</p>
+        <div class="mt-8 text-sm opacity-75">
+            <p>基于iPhone 15 Pro设计规范 | 使用Tailwind CSS + Lucide图标</p>
+        </div>
+    </div>
+
+    <!-- 原型展示区域 -->
+    <div class="prototype-grid">
+        <!-- 首页 -->
+        <div class="prototype-item">
+            <div class="page-info">
+                <h3>🏠 首页 - 今日概览</h3>
+                <p>展示今日使用时长、解锁次数、亮屏时长等核心数据，以及最常用应用排行榜</p>
+            </div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <iframe src="首页.html" class="page-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 统计页面 -->
+        <div class="prototype-item">
+            <div class="page-info">
+                <h3>📊 统计分析</h3>
+                <p>详细的使用数据统计，支持时间范围筛选、图表展示和数据对比分析</p>
+            </div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <iframe src="统计页面.html" class="page-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 应用管理页面 -->
+        <div class="prototype-item">
+            <div class="page-info">
+                <h3>📱 应用管理</h3>
+                <p>应用列表管理，支持按使用时长、频次、大小排序，提供批量卸载功能</p>
+            </div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <iframe src="应用管理页面.html" class="page-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提醒设置页面 -->
+        <div class="prototype-item">
+            <div class="page-info">
+                <h3>🔔 提醒设置</h3>
+                <p>使用时长提醒设置，支持单个应用和整体手机使用时长阈值配置</p>
+            </div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <iframe src="提醒设置页面.html" class="page-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史数据页面 -->
+        <div class="prototype-item">
+            <div class="page-info">
+                <h3>📈 历史数据</h3>
+                <p>历史使用数据查看和对比，支持日历视图和趋势分析</p>
+            </div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <iframe src="历史数据页面.html" class="page-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部说明 -->
+    <div class="text-center py-20 text-white opacity-75">
+        <p class="text-lg mb-4">🎨 高保真原型设计完成</p>
+        <p class="text-sm">所有界面均采用现代化设计规范，可直接用于开发参考</p>
+    </div>
+
+    <script>
+        // 初始化Lucide图标
+        lucide.createIcons();
+        
+        // 添加一些交互效果
+        document.querySelectorAll('.phone-frame').forEach(frame => {
+            frame.addEventListener('mouseenter', () => {
+                frame.style.transform = 'scale(1.02)';
+                frame.style.transition = 'transform 0.3s ease';
+            });
+            
+            frame.addEventListener('mouseleave', () => {
+                frame.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

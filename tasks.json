@@ -1,0 +1,348 @@
+[
+  {
+    "id": 1,
+    "title": "Project Setup and Core Architecture",
+    "status": "pending",
+    "details": "Create new Android project targeting API 33+ with Kotlin. Configure Gradle dependencies for Jetpack Compose, Room, SQLCipher, MPAndroidChart, and Lucide Icons. Set up database entities for usage tracking, notifications, and user settings. Implement Repository pattern with encrypted local storage. Configure WorkManager for background data collection. Set up navigation component and establish theming system (dark/light modes). Create base ViewModels and establish dependency injection patterns.",
+    "priority": "high",
+    "subtasks": [
+      {
+        "id": 1,
+        "title": "Initialize Android Project and Configure Build System",
+        "status": "pending",
+        "details": "Create new Android project in Android Studio with minimum SDK 33. Configure app-level build.gradle with Kotlin compiler extension version, Compose BOM, Room dependencies with SQLCipher, MPAndroidChart library, and Lucide Icons. Set up proper ProGuard rules for SQLCipher. Configure project-level build.gradle with appropriate plugin versions. Enable Jetpack Compose in build configuration.",
+        "description": "Create new Android project with Kotlin targeting API 33+, configure Gradle build files with all required dependencies including Jetpack Compose, Room, SQLCipher, MPAndroidChart, and Lucide Icons",
+        "dependencies": [],
+        "testStrategy": "Verify project builds successfully and all dependencies resolve without conflicts"
+      },
+      {
+        "id": 2,
+        "title": "Set Up Room Database with SQLCipher Encryption",
+        "status": "pending",
+        "details": "Define Entity classes for UsageTracking, Notifications, and UserSettings with proper annotations. Create DAO interfaces with CRUD operations for each entity. Implement RoomDatabase class with SQLCipher integration using SupportFactory for encryption. Configure database version and migration strategy. Set up database initialization with proper encryption key management.",
+        "description": "Create database entities for usage tracking, notifications, and user settings, configure Room database with SQLCipher encryption, and implement database initialization",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Unit tests for entity validation, DAO operations, and encryption/decryption functionality. Integration tests to verify encrypted database creation and data persistence"
+      },
+      {
+        "id": 3,
+        "title": "Implement Repository Pattern and Data Layer",
+        "status": "pending",
+        "details": "Create Repository interfaces and implementations for each data entity. Implement data access methods using Room DAOs with proper error handling and coroutines. Set up WorkManager workers for background usage data collection and periodic tasks. Configure work constraints and scheduling. Implement data synchronization and caching strategies.",
+        "description": "Create repository classes implementing the Repository pattern for data access, configure WorkManager for background data collection, and establish data flow patterns",
+        "dependencies": [
+          2
+        ],
+        "testStrategy": "Unit tests for repository methods, data transformation, and error handling. Integration tests for WorkManager background tasks and data collection workflows"
+      },
+      {
+        "id": 4,
+        "title": "Establish MVVM Architecture with ViewModels and LiveData",
+        "status": "pending",
+        "details": "Create BaseViewModel class with common functionality. Implement specific ViewModels for each screen using LiveData/StateFlow for UI state management. Set up dependency injection using Hilt or manual DI for repositories and ViewModels. Establish proper lifecycle management and data binding patterns. Create ViewModelFactory if needed for dependency injection.",
+        "description": "Create base ViewModel classes, implement MVVM architecture patterns, set up dependency injection, and establish communication between UI and data layers",
+        "dependencies": [
+          3
+        ],
+        "testStrategy": "Unit tests for ViewModel logic, LiveData transformations, and dependency injection setup. Mock repository dependencies for isolated ViewModel testing"
+      },
+      {
+        "id": 5,
+        "title": "Configure Navigation and Theming System",
+        "status": "pending",
+        "details": "Configure Navigation Compose with route definitions and navigation graph. Implement Material3 theming with custom color schemes for dark and light modes. Create theme switching functionality with preference persistence. Set up base composable components and establish design system patterns. Configure proper theme application across the app with dynamic color support.",
+        "description": "Set up Jetpack Compose Navigation component, implement theming system with dark/light mode support, and create base UI structure",
+        "dependencies": [
+          4
+        ],
+        "testStrategy": "UI tests for navigation flow between screens, theme switching functionality, and visual consistency across different themes. Automated tests for theme persistence"
+      }
+    ],
+    "description": "Initialize Android project with Jetpack Compose, set up Room database with SQLCipher encryption, configure build system, and establish core architecture patterns including MVVM with ViewModels and LiveData.",
+    "dependencies": [],
+    "testStrategy": "Unit tests for database operations, encryption/decryption functionality, and repository patterns. Integration tests for Room database with SQLCipher. UI tests for theme switching and basic navigation flow."
+  },
+  {
+    "id": 2,
+    "title": "Permissions and Usage Data Collection",
+    "status": "pending",
+    "details": "Build onboarding screens explaining app benefits and permission requirements. Implement UsageStatsManager integration for foreground/background app monitoring with configurable session thresholds (1-3s). Create NotificationListenerService for tracking notification history and response rates. Implement three performance modes (standard, high-precision, energy-saving) with different sampling intervals. Add screen unlock/lock detection and screen-on/off event monitoring. Ensure proper handling of permission denial scenarios with user-friendly messaging.",
+    "priority": "high",
+    "subtasks": [
+      {
+        "id": 1,
+        "title": "Create Onboarding Flow with Permission Request Screens",
+        "status": "pending",
+        "details": "Create multiple onboarding screens using ViewPager2 or similar navigation component. Include explanatory content about app benefits, permission requirements, and data usage. Implement permission request dialogs for PACKAGE_USAGE_STATS and BIND_NOTIFICATION_LISTENER_SERVICE. Handle different Android API levels and permission states. Add skip/retry options and graceful degradation for denied permissions with user-friendly messaging.",
+        "description": "Design and implement the onboarding flow screens that explain app benefits and guide users through granting Usage Access and Notification Access permissions",
+        "dependencies": [],
+        "testStrategy": "Test permission flow across Android versions 6-14. Verify UI/UX flow with different permission states. Test graceful handling of permission denials."
+      },
+      {
+        "id": 2,
+        "title": "Implement UsageStatsManager Integration for App Monitoring",
+        "status": "pending",
+        "details": "Integrate UsageStatsManager API to query app usage events and statistics. Implement configurable session thresholds (1-3 seconds) for determining meaningful app usage sessions. Create data models for storing app usage events with millisecond precision timestamps. Handle edge cases like rapid app switching and system apps filtering. Implement efficient querying strategies to minimize battery impact.",
+        "description": "Build the core app usage tracking system using UsageStatsManager to monitor foreground/background app activities with configurable session thresholds",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Mock UsageStatsManager for unit testing. Validate data accuracy against manual timing measurements. Test with rapid app switching scenarios."
+      },
+      {
+        "id": 3,
+        "title": "Create NotificationListenerService for Notification Tracking",
+        "status": "pending",
+        "details": "Extend NotificationListenerService to intercept notification events. Track notification arrival timestamps, dismissal events, and user interactions with millisecond precision. Store notification metadata including app source, category, and response times. Implement notification response rate calculations and interaction pattern analysis. Handle notification grouping and bundled notifications appropriately.",
+        "description": "Implement a NotificationListenerService to capture and track notification events, response rates, and interaction patterns",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Test notification capture across different apps and notification types. Verify response rate calculations. Test with grouped notifications and different Android versions."
+      },
+      {
+        "id": 4,
+        "title": "Implement Performance Modes and Screen State Detection",
+        "status": "pending",
+        "details": "Implement three performance modes with different data collection frequencies: standard (5s intervals), high-precision (1s intervals), energy-saving (30s intervals). Create screen state monitoring using BroadcastReceiver for ACTION_SCREEN_ON, ACTION_SCREEN_OFF, ACTION_USER_PRESENT events. Implement dynamic switching between performance modes based on battery level and user preferences. Add configuration options for users to manually select performance modes.",
+        "description": "Create three performance modes (standard, high-precision, energy-saving) with different sampling intervals and implement screen unlock/lock detection",
+        "dependencies": [
+          2,
+          3
+        ],
+        "testStrategy": "Test battery impact across all performance modes using battery profiling tools. Verify screen state detection accuracy. Test mode switching under different battery conditions."
+      },
+      {
+        "id": 5,
+        "title": "Create Background Services and Data Collection Orchestration",
+        "status": "pending",
+        "details": "Create foreground service for continuous data collection with proper notification channel setup. Implement WorkManager for scheduled data collection tasks and periodic cleanup. Create data synchronization layer to coordinate between UsageStatsManager and NotificationListenerService. Implement local database storage with efficient indexing for millisecond-precision timestamps. Add data retention policies and cleanup mechanisms. Ensure proper service lifecycle management and crash recovery.",
+        "description": "Build the background service architecture to orchestrate data collection from all sources while maintaining system performance and battery efficiency",
+        "dependencies": [
+          2,
+          3,
+          4
+        ],
+        "testStrategy": "Test service stability over extended periods. Monitor memory usage and potential memory leaks. Test crash recovery and data integrity. Validate data collection accuracy under various system load conditions."
+      }
+    ],
+    "description": "Implement onboarding flow with permission requests for Usage Access and Notification Access, create background services for collecting app usage statistics and notification data with millisecond precision.",
+    "dependencies": [
+      1
+    ],
+    "testStrategy": "Mock UsageStatsManager for unit testing data collection logic. Test permission flow on different Android versions. Validate data accuracy against manual timing. Test battery impact across different performance modes."
+  },
+  {
+    "id": 3,
+    "title": "Data Visualization and Interactive Charts",
+    "status": "pending",
+    "details": "Create interactive bar charts (horizontal/vertical) for app usage display. Implement calendar heatmap showing daily usage intensity with color coding. Build 24-hour timeline view for detailed session analysis. Develop comparison views for time-range vs time-range and app vs app analysis. Add filtering system with pre-set and custom date ranges, app category filters, and name search. Implement smart grouping by frequency and blacklist functionality. Ensure chart rendering performance under 300ms with data sampling for large datasets.",
+    "priority": "medium",
+    "subtasks": [
+      {
+        "id": 1,
+        "title": "Setup MPAndroidChart Foundation and Basic Bar Charts",
+        "status": "pending",
+        "details": "Add MPAndroidChart dependency to build.gradle. Create base chart configuration classes with common styling (colors, fonts, animations). Implement BarChartManager class with methods for horizontal and vertical bar chart creation. Set up data models for chart data binding. Configure chart appearance with custom colors, grid lines, and axis formatting. Implement basic touch interactions and zoom capabilities.",
+        "description": "Initialize MPAndroidChart library integration and implement basic horizontal and vertical bar charts for app usage display with proper styling and data binding.",
+        "dependencies": [],
+        "testStrategy": "Unit tests for chart data binding and configuration. Visual tests for chart appearance and basic interactions."
+      },
+      {
+        "id": 2,
+        "title": "Implement Calendar Heatmap Visualization",
+        "status": "pending",
+        "details": "Extend MPAndroidChart or create custom view for calendar heatmap. Implement date-based grid layout with proper month/year navigation. Create color intensity mapping algorithm based on usage data ranges. Add touch interactions for date selection and detail popups. Implement smooth scrolling between months with proper date boundaries. Handle different screen sizes and orientations for optimal calendar display.",
+        "description": "Create calendar heatmap component showing daily usage intensity with color-coded cells representing different usage levels throughout months and years.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Test color intensity calculations with various data ranges. Verify date navigation and selection accuracy. Test responsive layout on different screen sizes."
+      },
+      {
+        "id": 3,
+        "title": "Build 24-Hour Timeline View Component",
+        "status": "pending",
+        "details": "Create custom timeline view extending from base chart components. Implement time-based horizontal axis with hour markers and session blocks. Design session visualization with different colors per app and duration-based block sizes. Add touch interactions for session detail popups showing app name, duration, and timestamps. Implement smooth scrolling and zooming for different time granularities. Handle overlapping sessions and provide clear visual separation.",
+        "description": "Develop detailed timeline visualization showing app usage sessions across 24-hour periods with session blocks, duration indicators, and interactive session details.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Test timeline accuracy with various session data. Verify touch interactions and popup positioning. Test scrolling performance with dense session data."
+      },
+      {
+        "id": 4,
+        "title": "Develop Comparison Views and Analysis Tools",
+        "status": "pending",
+        "details": "Build ComparisonViewController managing multiple chart instances. Implement side-by-side layout for time-range comparisons using existing chart components. Create app comparison views with usage metrics, trends, and percentage changes. Add statistical calculation utilities for growth rates, averages, and variance analysis. Implement difference highlighting with color coding and percentage indicators. Design responsive layout adapting to different comparison types and screen orientations.",
+        "description": "Create comparison interfaces for time-range vs time-range and app vs app analysis with side-by-side charts, difference indicators, and statistical summaries.",
+        "dependencies": [
+          1,
+          2,
+          3
+        ],
+        "testStrategy": "Test comparison calculations accuracy. Verify layout responsiveness with different data sets. Test statistical analysis correctness and performance."
+      },
+      {
+        "id": 5,
+        "title": "Implement Filtering System and Performance Optimization",
+        "status": "pending",
+        "details": "Create FilterManager class handling multiple filter types (date, category, search). Implement pre-set date range options (today, week, month, custom) with date picker integration. Build app category filtering with multi-select capabilities and search functionality. Implement smart grouping algorithms by usage frequency and blacklist management. Add data sampling strategies for large datasets to maintain <300ms rendering performance. Implement efficient data caching and background processing for filter operations. Create filter UI components with clear visual indicators and reset functionality.",
+        "description": "Build comprehensive filtering system with date ranges, app categories, search functionality, smart grouping, and optimize chart rendering performance for large datasets.",
+        "dependencies": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "testStrategy": "Performance tests ensuring <300ms chart rendering with large datasets. Test filter combinations and data accuracy. Verify search functionality and smart grouping algorithms. Test memory usage with extensive filtering operations."
+      }
+    ],
+    "description": "Develop comprehensive data visualization system using MPAndroidChart with bar charts, calendar heatmaps, timeline views, and comparison interfaces. Implement filtering and smart grouping capabilities.",
+    "dependencies": [
+      1,
+      2
+    ],
+    "testStrategy": "Performance tests for chart rendering with large datasets. Visual regression tests for different chart types. User interaction tests for filtering and comparison features. Accessibility tests for chart content descriptions."
+  },
+  {
+    "id": 4,
+    "title": "User Interface and Navigation",
+    "status": "pending",
+    "details": "Create Home screen with greeting, daily summary cards, unlock count, screen-on duration, and top 5 apps list. Build Statistics tab with comprehensive charts and filtering options. Implement App Management interface for per-app settings and blacklists. Design Reminders tab with global and per-app limits, progress alerts, and Do-Not-Disturb scheduling. Create History tab with month-view calendar and trend analysis. Add bottom navigation bar for tab switching. Implement dual-language support (Chinese/English) with proper localization. Add accessibility features including screen reader labels, high-contrast mode, and dynamic font scaling.",
+    "priority": "medium",
+    "subtasks": [
+      {
+        "id": 1,
+        "title": "Set up Jetpack Compose foundation and navigation structure",
+        "status": "pending",
+        "details": "Set up MainActivity with Compose theme, create BottomNavigationBar composable with 5 tabs, implement NavHost with navigation routes for each screen, create placeholder composables for each tab screen, and establish the overall app navigation architecture using Navigation Compose library.",
+        "description": "Create the basic Jetpack Compose project structure with bottom navigation bar and tab switching functionality between Home, Statistics, App Management, Reminders, and History screens.",
+        "dependencies": [],
+        "testStrategy": "Navigation flow tests to ensure proper tab switching and back navigation behavior"
+      },
+      {
+        "id": 2,
+        "title": "Implement Home screen with daily summary and app usage display",
+        "status": "pending",
+        "details": "Create HomeScreen composable with greeting text based on time of day, design summary cards using Card composables for unlock count and screen time, implement LazyColumn for top 5 apps list with app icons and usage data, add pull-to-refresh functionality, and integrate with usage statistics data sources.",
+        "description": "Build the Home screen featuring personalized greeting, daily summary cards showing unlock count and screen-on duration, and a top 5 most used apps list with usage statistics.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "UI tests for card layouts, data display accuracy, and pull-to-refresh functionality"
+      },
+      {
+        "id": 3,
+        "title": "Build Statistics tab with charts and filtering capabilities",
+        "status": "pending",
+        "details": "Implement StatisticsScreen with chart library integration (such as MPAndroidChart or Compose Charts), create bar charts and line graphs for usage trends, add date range picker for filtering, implement category-based filtering, create detailed usage breakdowns by app and time periods, and add export functionality for statistics data.",
+        "description": "Create comprehensive statistics screen with interactive charts showing app usage patterns, time-based filtering options, and detailed analytics visualization.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Chart rendering tests, filtering functionality tests, and data accuracy validation"
+      },
+      {
+        "id": 4,
+        "title": "Develop App Management and Reminders interfaces",
+        "status": "pending",
+        "details": "Build AppManagementScreen with searchable app list, toggle switches for app blocking, per-app time limits configuration, and blacklist management. Create RemindersScreen with global usage limit settings, per-app reminder configuration, progress notification setup, Do-Not-Disturb time scheduling with time pickers, and reminder frequency options.",
+        "description": "Create App Management screen for per-app settings and blacklists, and Reminders tab with global/per-app limits, progress alerts, and Do-Not-Disturb scheduling functionality.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Settings persistence tests, reminder scheduling tests, and Do-Not-Disturb functionality validation"
+      },
+      {
+        "id": 5,
+        "title": "Implement History tab and accessibility features with localization",
+        "status": "pending",
+        "details": "Build HistoryScreen with month-view calendar using CalendarView or custom Compose calendar, add trend analysis charts, implement day-by-day usage details. Add accessibility features including contentDescription for all UI elements, support for TalkBack screen reader, high-contrast mode toggle, dynamic font scaling support. Implement string resources for Chinese and English localization, add language switching functionality, and ensure proper RTL/LTR text direction support.",
+        "description": "Create History screen with calendar view and trend analysis, implement comprehensive accessibility features, and add dual-language support with proper localization for Chinese and English.",
+        "dependencies": [
+          2,
+          3,
+          4
+        ],
+        "testStrategy": "Accessibility tests with TalkBack enabled, high-contrast mode validation, localization tests for both languages, and responsive design tests across different screen sizes"
+      }
+    ],
+    "description": "Build complete UI using Jetpack Compose with Home screen, Statistics, App Management, Reminders, and History tabs. Implement responsive design with accessibility features and dual-language support.",
+    "dependencies": [
+      1,
+      3
+    ],
+    "testStrategy": "UI tests for all screen layouts and navigation flows. Accessibility tests with TalkBack and high-contrast modes. Localization tests for both supported languages. Responsive design tests across different screen sizes."
+  },
+  {
+    "id": 5,
+    "title": "Reminders System and Data Export",
+    "status": "pending",
+    "details": "Create reminder engine with global and per-app usage thresholds. Implement progress-based alerts (80%, 90%, 100% of limits). Add rest reminder system with configurable intervals. Build Do-Not-Disturb scheduling with app whitelist functionality. Implement local backup/restore system supporting CSV, PDF, and JSON formats with encryption. Add export progress indicators with batching for large datasets. Create data cleanup options for managing database size. Ensure all reminder notifications respect system notification settings and user preferences.",
+    "priority": "medium",
+    "subtasks": [
+      {
+        "id": 1,
+        "title": "Core Reminder Engine with Usage Thresholds",
+        "status": "pending",
+        "details": "Create ReminderEngine class with threshold monitoring logic. Implement UsageThreshold model with configurable limits. Build notification trigger system that calculates usage percentages and fires alerts at specified intervals. Include database schema for storing threshold configurations and reminder history. Integrate with existing usage tracking to monitor real-time consumption against limits.",
+        "description": "Implement the foundational reminder system that monitors app usage and triggers notifications based on configurable global and per-app thresholds. Include progress-based alerts at 80%, 90%, and 100% of usage limits.",
+        "dependencies": [],
+        "testStrategy": "Unit tests for threshold calculations, percentage-based triggers, and notification timing logic. Mock usage data to verify alert accuracy."
+      },
+      {
+        "id": 2,
+        "title": "Rest Reminder System with Configurable Intervals",
+        "status": "pending",
+        "details": "Extend ReminderEngine with RestReminderService that tracks continuous usage sessions. Implement configurable interval settings (e.g., every 30 minutes, 1 hour). Create break suggestion notifications with customizable messages. Add session tracking to detect when users return from breaks. Store rest reminder preferences and history in database.",
+        "description": "Build a rest reminder subsystem that prompts users to take breaks at configurable intervals, independent of usage thresholds. Support customizable break durations and reminder frequencies.",
+        "dependencies": [
+          1
+        ],
+        "testStrategy": "Integration tests for interval timing accuracy and session detection. Verify reminder persistence across app restarts."
+      },
+      {
+        "id": 3,
+        "title": "Do-Not-Disturb Scheduling with App Whitelist",
+        "status": "pending",
+        "details": "Create DoNotDisturbScheduler with time-based rules and app whitelist management. Implement scheduling UI for setting quiet hours, days, and exceptions. Build notification filtering system that checks DND status before sending reminders. Add app whitelist functionality allowing specific apps to bypass DND settings. Integrate with system notification settings and user preferences.",
+        "description": "Implement Do-Not-Disturb functionality that allows users to schedule quiet periods and maintain an app whitelist for exceptions. Ensure all reminder notifications respect these settings.",
+        "dependencies": [
+          1,
+          2
+        ],
+        "testStrategy": "Integration tests for DND scheduling accuracy and whitelist functionality. Verify notification suppression during quiet periods and proper exception handling."
+      },
+      {
+        "id": 4,
+        "title": "Local Backup and Restore System",
+        "status": "pending",
+        "details": "Create BackupService with encryption capabilities using AES-256. Implement data serialization for user settings, usage history, and reminder configurations. Build restore functionality with data validation and conflict resolution. Add database cleanup options for managing storage size. Include backup scheduling and automatic cleanup of old backup files. Ensure backup integrity with checksums and version tracking.",
+        "description": "Build comprehensive local backup and restore functionality that saves user data, settings, and usage history to encrypted local files. Support multiple export formats and include data cleanup options.",
+        "dependencies": [],
+        "testStrategy": "File I/O tests for backup creation and restoration. Encryption validation tests and data integrity checks. Performance tests for large dataset handling."
+      },
+      {
+        "id": 5,
+        "title": "Multi-Format Data Export with Progress Indicators",
+        "status": "pending",
+        "details": "Extend BackupService with ExportManager supporting multiple output formats. Implement CSV export with customizable field selection and formatting. Build PDF export with charts and formatted reports using PDF generation library. Create JSON export with structured data representation. Add progress tracking with batching for large datasets (process in chunks of 1000 records). Include export progress UI with cancellation support and estimated completion times.",
+        "description": "Implement data export functionality supporting CSV, PDF, and JSON formats with encryption options. Include progress indicators and batching for large datasets to ensure responsive user experience.",
+        "dependencies": [
+          4
+        ],
+        "testStrategy": "Format-specific export tests for CSV, PDF, and JSON outputs. Performance tests for large dataset batching and progress indicator accuracy. User experience tests for export cancellation and progress feedback."
+      }
+    ],
+    "description": "Implement comprehensive reminder system with usage thresholds, rest intervals, and Do-Not-Disturb scheduling. Build local backup/restore functionality with encrypted file export in multiple formats.",
+    "dependencies": [
+      1,
+      2,
+      4
+    ],
+    "testStrategy": "Unit tests for reminder logic and threshold calculations. Integration tests for notification delivery and Do-Not-Disturb functionality. File I/O tests for backup/restore operations with encryption validation. Performance tests for large data export operations."
+  }
+]

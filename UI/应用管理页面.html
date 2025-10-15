@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间都去哪里了 - 应用管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body { 
+            overflow: hidden; 
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .phone-mockup {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        .status-bar {
+            height: 44px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: #1d1d1f;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .content {
+            height: calc(100% - 44px - 83px);
+            background: transparent;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .content::-webkit-scrollbar { display: none; }
+        .tab-bar {
+            height: 83px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-bottom: 20px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .header-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .sort-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #6b7280;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .sort-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .sort-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+        }
+        .app-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        .app-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="phone-mockup">
+        <div class="screen">
+            <!-- 状态栏 -->
+            <div class="status-bar">
+                <span>9:41</span>
+                <div class="flex items-center space-x-1">
+                    <i class="fas fa-signal text-sm"></i>
+                    <i class="fas fa-wifi text-sm"></i>
+                    <i class="fas fa-battery-three-quarters text-sm"></i>
+                </div>
+            </div>
+            
+            <!-- 内容区域 -->
+            <div class="content">
+                <!-- 头部 -->
+                <div class="header-card px-6 py-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold text-gray-900">应用管理</h1>
+                        <div class="flex items-center space-x-3">
+                            <button class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors">
+                                <i data-lucide="search" class="w-5 h-5 text-gray-600"></i>
+                            </button>
+                            <button class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors">
+                                <i data-lucide="filter" class="w-5 h-5 text-gray-600"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 排序选项 -->
+                    <div class="flex flex-wrap gap-3">
+                        <button class="sort-btn active">使用时长</button>
+                        <button class="sort-btn">使用频次</button>
+                        <button class="sort-btn">应用大小</button>
+                        <button class="sort-btn">安装时间</button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- 统计概览 -->
+                    <div class="card p-6 mb-6">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-4">应用概览</h2>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center p-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-blue-600 mb-1">156</div>
+                                <div class="text-sm text-gray-600">已安装应用</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-gradient-to-br from-green-50 to-green-100">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-green-600 mb-1">23</div>
+                                <div class="text-sm text-gray-600">今日使用</div>
+                            </div>
+                            <div class="text-center p-4 rounded-xl bg-gradient-to-br from-red-50 to-red-100">
+                                <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-red-600 mb-1">12</div>
+                                <div class="text-sm text-gray-600">长期未用</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 应用列表 -->
+                    <div class="card p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900">应用列表</h3>
+                            <button class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl text-sm font-medium hover:from-purple-600 hover:to-purple-700 transition-all">
+                                批量管理
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <!-- 应用项 -->
+                            <div class="app-item">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mr-4">
+                                            <i data-lucide="play" class="w-7 h-7 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-gray-900 text-lg">YouTube</p>
+                                            <p class="text-sm text-gray-600">今日使用 2h 15m</p>
+                                            <p class="text-xs text-gray-500">大小: 128MB • 娱乐</p>
+                                            <div class="w-24 h-1 bg-gray-200 rounded-full mt-2">
+                                                <div class="w-4/5 h-full bg-red-500 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="action-btn bg-blue-100 hover:bg-blue-200">
+                                            <i data-lucide="settings" class="w-4 h-4 text-blue-600"></i>
+                                        </button>
+                                        <button class="action-btn bg-red-100 hover:bg-red-200">
+                                            <i data-lucide="trash-2" class="w-4 h-4 text-red-600"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fab fa-whatsapp text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">微信</p>
+                                        <p class="text-sm text-gray-500">今日使用 1h 32m</p>
+                                        <p class="text-xs text-gray-400">大小: 256MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-cog text-blue-500 text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-trash text-red-500 text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fab fa-chrome text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Chrome</p>
+                                        <p class="text-sm text-gray-500">今日使用 45m</p>
+                                        <p class="text-xs text-gray-400">大小: 89MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-cog text-blue-500 text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-trash text-red-500 text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fab fa-instagram text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Instagram</p>
+                                        <p class="text-sm text-gray-500">今日使用 32m</p>
+                                        <p class="text-xs text-gray-400">大小: 145MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-cog text-blue-500 text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-trash text-red-500 text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl opacity-60">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gray-400 rounded-xl flex items-center justify-center mr-4">
+                                        <i class="fas fa-gamepad text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">游戏中心</p>
+                                        <p class="text-sm text-gray-500">30天未使用</p>
+                                        <p class="text-xs text-gray-400">大小: 67MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-cog text-blue-500 text-sm"></i>
+                                    </button>
+                                    <button class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-trash text-red-500 text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部导航栏 -->
+            <div class="tab-bar">
+                <div class="flex flex-col items-center">
+                    <i data-lucide="home" class="w-6 h-6 text-gray-400 mb-1"></i>
+                    <span class="text-xs text-gray-400">首页</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i data-lucide="bar-chart-3" class="w-6 h-6 text-gray-400 mb-1"></i>
+                    <span class="text-xs text-gray-400">统计</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i data-lucide="grid-3x3" class="w-6 h-6 text-gray-900 mb-1"></i>
+                    <span class="text-xs text-gray-900 font-semibold">应用</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-400 mb-1"></i>
+                    <span class="text-xs text-gray-400">提醒</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i data-lucide="history" class="w-6 h-6 text-gray-400 mb-1"></i>
+                    <span class="text-xs text-gray-400">历史</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
