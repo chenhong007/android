@@ -6,13 +6,719 @@
 
 _**User (2025-10-14 10:38Z)**_
 
-PRD需求增加一下能力，请修改@02_术语统一表_v2.2.md @03_数据模型设计方案_v2.md 增加专业术语字段，增加数据模型相关内容，符合PRD设计需求。
+PRD需求增加一下能力，请修改@02_术语统一表_v2.2.md @03_数据模型设计方案_v2.md 增加专业术语字段，增加数据模型相关内容，符合PRD设计需求。创建各个子任务，确认设计一致性，各个文档内部，以及各个文档之间一致性，无冲突无歧义，没有孤立没有使用的字段。
 
 ---
 
 _**Assistant (claude-4.5-sonnet-thinking)**_
 
-<think><details><summary>Thought Process</summary>用户要求我基于PRD需求增加新能力，并修改术语统一表和数据模型设计方案</details></think>
+<think><details><summary>Thought Process</summary>用户想要根据PRD需求增加能力，需要修改两个文档：
+1. 02_术语统一表_v2.2.md
+2. 03_数据模型设计方案_v2.md
+
+首先，我需要理解PRD中新增的需求。从选中的内容看：
+- 屏幕时长：可以从日、周、月、年、自定义时间等维度查看总体的亮屏时间
+- 手机解锁次数：可以从日、周、月、年、自定义时间等维度查看
+- APP打开次数：可以选择所有APP或单独某个APP，支持日、周、年、月维度
+- APP使用时长：可以选择所有APP或单独某个APP，支持日、周、年、月维度
+
+看起来PRD需求是增加多维度查询能力（日、周、月、年、自定义时间）。
+
+让我先阅读完整的PRD需求文档，了解全部新增需求。</details></think>
+
+---
+
+我来帮你分析PRD需求，并修改相关文档以支持多维度时间查询能力。让我先创建任务并读取完整的PRD文档。
+
+---
+
+Tool use: **todo_write**
+
+## Todo List
+
+- [-] 读取并分析PRD完整需求，理解新增的多维度查询能力
+- [ ] 分析需要新增的专业术语和字段定义
+- [ ] 更新术语统一表_v2.2.md，增加时间维度相关术语
+- [ ] 更新数据模型设计方案_v2.md，增加多维度查询支持
+- [ ] 验证文档内部一致性（术语、字段命名、数据类型）
+- [ ] 验证文档间一致性（两个文档术语、模型定义对齐）
+- [ ] 检查是否有孤立未使用的字段
+
+---
+
+Tool use: **read_file**
+
+Read file: 需求和设计/01_prd需求.md
+
+---
+
+<think><details><summary>Thought Process</summary>现在我理解了PRD的需求。主要新增的能力是：
+
+1. **多维度时间查询**：日、周、月、年、自定义时间范围
+2. **应用级别和全局级别的统计**：可以选择所有APP或单独某个APP
+3. **更清晰的统计维度定义**
+
+从PRD需求来看，需要：
+- 支持多时间维度的查询（日、周、月、年、自定义）
+- 支持单应用和全局应用的统计
+- 数据展示维度要清晰
+
+需要在术语表和数据模型中增加：
+1. 时间维度相关的术语定义（TimePeriod, TimeRange等）
+2. 可能需要增加汇总表来支持周、月、年级别的预计算
+3. 查询接口的设计要支持灵活的时间范围和应用选择
+
+让我分析需要增加的内容。</details></think>
+
+---
+
+Tool use: **todo_write**
+
+## Todo List
+
+- [x] 读取并分析PRD完整需求，理解新增的多维度查询能力
+- [ ] 分析需要新增的专业术语和字段定义
+- [ ] 更新术语统一表_v2.2.md，增加时间维度相关术语
+- [ ] 更新数据模型设计方案_v2.md，增加多维度查询支持
+- [ ] 验证文档内部一致性（术语、字段命名、数据类型）
+- [ ] 验证文档间一致性（两个文档术语、模型定义对齐）
+- [ ] 检查是否有孤立未使用的字段
+
+---
+
+<think><details><summary>Thought Process</summary>现在我理解了需求，PRD增加了多维度查询能力：
+1. 时间维度：日、周、月、年、自定义时间范围
+2. 应用维度：所有APP 或 单独某个APP
+
+需要在术语表和数据模型中增加：
+1. **时间维度枚举**：TimePeriod（日、周、月、年、自定义）
+2. **时间范围模型**：TimeRange（自定义时间范围）
+3. **汇总表结构**：可能需要周汇总、月汇总、年汇总表
+4. **查询参数模型**：支持灵活的时间和应用选择
+
+让我开始分析需要新增的术语和字段。</details></think>
+
+---
+
+现在我已理解PRD需求，主要是增加**多维度时间查询能力**。让我分析需要新增的专业术语和字段。
+
+---
+
+Tool use: **todo_write**
+
+## Todo List
+
+- [x] 读取并分析PRD完整需求，理解新增的多维度查询能力
+- [-] 分析需要新增的专业术语和字段定义
+- [ ] 更新术语统一表_v2.2.md，增加时间维度相关术语
+- [ ] 更新数据模型设计方案_v2.md，增加多维度查询支持
+- [ ] 验证文档内部一致性（术语、字段命名、数据类型）
+- [ ] 验证文档间一致性（两个文档术语、模型定义对齐）
+- [ ] 检查是否有孤立未使用的字段
+
+---
+
+<think><details><summary>Thought Process</summary>根据PRD需求分析，我需要增加以下专业术语和字段：
+
+## 需要新增的术语和模型：
+
+### 1. 时间维度枚举（TimePeriod）
+- DAILY（日）
+- WEEKLY（周）
+- MONTHLY（月）
+- YEARLY（年）
+- CUSTOM（自定义）
+
+### 2. 时间范围模型（TimeRange）
+- startTime：开始时间戳
+- endTime：结束时间戳
+
+### 3. 汇总表扩展
+目前只有 daily_summary，需要考虑是否需要：
+- weekly_summary（周汇总表）
+- monthly_summary（月汇总表）
+- yearly_summary（年汇总表）
+
+或者使用一个统一的 period_summary 表，通过 period_type 字段区分。
+
+### 4. 统计查询参数模型（StatsQuery）
+- timePeriod：时间维度
+- startTime：开始时间（自定义时用）
+- endTime：结束时间（自定义时用）
+- packageName：应用包名（可选，为null表示所有应用）
+- category：应用分类（可选）
+
+现在让我开始更新术语统一表。</details></think>
+
+---
+
+根据PRD需求，我识别出需要新增以下内容：
+
+## 需要新增的术语和字段：
+
+1. **时间维度枚举（TimePeriod）**：日、周、月、年、自定义
+2. **时间范围模型（TimeRange）**：支持自定义时间范围查询
+3. **周期汇总表**：扩展汇总能力支持周、月、年统计
+4. **查询参数模型**：支持灵活的时间+应用维度查询
+
+让我开始更新文档：
+
+---
+
+Tool use: **todo_write**
+
+## Todo List
+
+- [x] 读取并分析PRD完整需求，理解新增的多维度查询能力
+- [x] 分析需要新增的专业术语和字段定义
+- [-] 更新术语统一表_v2.2.md，增加时间维度相关术语
+- [ ] 更新数据模型设计方案_v2.md，增加多维度查询支持
+- [ ] 验证文档内部一致性（术语、字段命名、数据类型）
+- [ ] 验证文档间一致性（两个文档术语、模型定义对齐）
+- [ ] 检查是否有孤立未使用的字段
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>文件可能已经被修改了，我需要重新读取文件内容。</details></think>
+
+---
+
+Tool call timed out after 30s (read file)
+
+---
+
+<think><details><summary>Thought Process</summary>读取超时了，让我尝试直接开始更新。先更新版本号部分。</details></think>
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>看起来文件已经被更新了版本号，现在是v2.3，并且更新说明也已经改了。让我直接在文档末尾添加新的枚举类型部分。</details></think>
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>我发现表格格式不一样。原文件使用了||这种形式的表格。让我重新写。</details></think>
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>我看到表格的形式是|| 而不是|，让我重新尝试。</details></think>
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>看起来后面没有分割线---，让我使用grep查找后面的内容。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "USER_PRESENT" in "需求和设计/02_术语统一表_v2.2.md" • 3 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `\| 2 \| 手机解锁次数 \| `phoneUnlockCount` \| Int \| 🔓 \| screen_event表 \| COUNT(USER_PRESENT事件) \| 用户解锁设备的次数（设备层面） \|` | L16 |
+| `\| 事件类型 \| `eventType` \| ScreenEventType \| SCREEN_ON, SCREEN_OFF, USER_PRESENT \|` | L81 |
+| `\| `USER_PRESENT` \| 用户解锁 \| 用户成功解锁设备 \| 计算phoneUnlockCount \|` | L96 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>啊，原来文档已经有了TimeDimension这个枚举！让我继续查看后面的内容。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "TimeDimension" in "需求和设计/02_术语统一表_v2.2.md" • 1 match</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### TimeDimension（时间维度类型）` | L98 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>太好了！文档已经有了TimeDimension和StatScope枚举类型。让我继续查看StatScope的定义。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "StatScope" in "需求和设计/02_术语统一表_v2.2.md" • 1 match</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### StatScope（统计范围类型）` | L110 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>太好了，文档中已经定义了：
+1. TimeDimension - 时间维度类型
+2. StatScope - 统计范围类型
+3. PeriodType - 统计周期类型
+
+让我继续查看PeriodType和其他内容，看看文档是否已经完整包含了所有需要的术语。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "PeriodType|TimeRange|QueryParams" in "需求和设计/02_术语统一表_v2.2.md" • 1 match</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### PeriodType（统计周期类型）` | L120 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>好的，看来术语统一表已经包含了很多我需要的内容。让我完整地阅读一下文档，看看还需要增加什么内容。</details></think>
+
+---
+
+让我完整查看术语统一表，了解已有内容：
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "^## " in "需求和设计/02_术语统一表_v2.2.md" • 8 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `## 🎯 四大核心指标（基础统计层）` | L11 |
+| `## 📊 数据层次架构` | L36 |
+| `## 📦 核心数据模型（基础统计层）` | L48 |
+| `## 🔤 基础枚举类型` | L86 |
+| `## 📊 数据表结构（基础统计层）` | L139 |
+| `## 🎨 UI术语（保持不变）` | L191 |
+| `## 📝 扩展字段说明` | L213 |
+| `## 📋 使用规范` | L233 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>让我查看整个文档的结构。看起来术语统一表已经包含了：
+- 四大核心指标
+- 数据层次架构
+- 核心数据模型
+- 基础枚举类型（包括TimeDimension, StatScope, PeriodType）
+- 数据表结构
+- UI术语
+- 扩展字段说明
+- 使用规范
+
+看起来术语统一表已经相当完整了。让我检查一下是否还需要增加查询参数模型（QueryParams）和时间范围模型（TimeRange）。</details></think>
+
+---
+
+Tool use: **grep**
+
+---
+
+<think><details><summary>Thought Process</summary>好的，术语统一表中还缺少：
+1. QueryParams/StatsQuery - 查询参数模型
+2. TimeRange - 时间范围模型
+
+这些是数据模型，应该添加到"📦 核心数据模型"部分。让我找到合适的位置添加。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "### ScreenEvent|## 🔤" in "需求和设计/02_术语统一表_v2.2.md" • 3 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### ScreenEvent（屏幕事件）` | L76 |
+| `## 🔤 基础枚举类型` | L86 |
+| `### ScreenEventType（屏幕事件类型）` | L88 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>好的，我需要在ScreenEvent之后、基础枚举类型之前，添加查询相关的数据模型。让我添加 StatsQuery 和 TimeRange 两个数据模型。</details></think>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: 需求和设计/02_术语统一表_v2.2.md</summary>
+
+**Chunk 1**
+Lines added: 61, lines removed: undefined
+
+```diff
+@@ -81,4 +81,65 @@
+  | 事件类型 | `eventType` | ScreenEventType | SCREEN_ON, SCREEN_OFF, USER_PRESENT |
+  | 时间戳 | `timestamp` | Long | 事件发生时间戳（毫秒） |
++ 
++ ### StatsQuery（统计查询参数）
++ 
++ 用于灵活的多维度数据查询。
++ 
++ | 中文字段 | 字段名 | 类型 | 说明 |
++ |---------|--------|------|------|
++ | 时间维度 | `timeDimension` | TimeDimension | 时间粒度：DAILY/WEEKLY/MONTHLY/YEARLY/CUSTOM |
++ | 开始时间 | `startTime` | Long | 查询开始时间戳（毫秒），CUSTOM时必填 |
++ | 结束时间 | `endTime` | Long | 查询结束时间戳（毫秒），CUSTOM时必填 |
++ | 统计范围 | `statScope` | StatScope | 统计范围：ALL_APPS/SINGLE_APP/CATEGORY |
++ | 应用包名 | `packageName` | String? | SINGLE_APP时必填，其他为null |
++ | 应用分类 | `category` | AppCategory? | CATEGORY时必填，其他为null |
++ | 周期类型 | `periodType` | PeriodType? | 预定义周期（可选，如TODAY、THIS_WEEK等） |
++ 
++ **使用示例**：
++ 
++ ```kotlin
++ // 示例1：查询今日所有应用的统计数据
++ StatsQuery(
++     timeDimension = TimeDimension.DAILY,
++     periodType = PeriodType.TODAY,
++     statScope = StatScope.ALL_APPS
++ )
++ 
++ // 示例2：查询本周微信的统计数据
++ StatsQuery(
++     timeDimension = TimeDimension.WEEKLY,
++     periodType = PeriodType.THIS_WEEK,
++     statScope = StatScope.SINGLE_APP,
++     packageName = "com.tencent.mm"
++ )
++ 
++ // 示例3：查询自定义时间范围内社交类应用的统计
++ StatsQuery(
++     timeDimension = TimeDimension.CUSTOM,
++     startTime = 1728835200000L,  // 2024-10-14 00:00:00
++     endTime = 1728921599999L,     // 2024-10-14 23:59:59
++     statScope = StatScope.CATEGORY,
++     category = AppCategory.SOCIAL
++ )
++ ```
++ 
++ ### TimeRange（时间范围）
++ 
++ 用于表示查询的时间范围。
++ 
++ | 中文字段 | 字段名 | 类型 | 说明 |
++ |---------|--------|------|------|
++ | 开始时间 | `startTime` | Long | 开始时间戳（毫秒） |
++ | 结束时间 | `endTime` | Long | 结束时间戳（毫秒） |
++ | 维度类型 | `dimension` | TimeDimension | 时间维度类型 |
++ 
++ **业务规则**：
++ - `endTime >= startTime`（必须满足）
++ - 时间范围的计算遵循所属维度的定义规则
++ - DAILY：按自然日（00:00:00 - 23:59:59）
++ - WEEKLY：按自然周（周一00:00 - 周日23:59）
++ - MONTHLY：按自然月（1日00:00 - 月末23:59）
++ - YEARLY：按自然年（1月1日00:00 - 12月31日23:59）
++ - CUSTOM：用户自定义
+  
+  ---
+```
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>非常好！我成功在术语统一表中添加了StatsQuery和TimeRange两个数据模型。现在让我继续检查术语统一表是否还需要其他补充，然后更新TODO状态。</details></think>
+
+---
+
+很好！现在让我检查术语统一表的数据表结构部分是否需要添加周/月/年汇总表：
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "数据表结构|daily_summary|weekly_summary|monthly_summary" in "需求和设计/02_术语统一表_v2.2.md" • 10 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `## 📊 数据表结构（基础统计层）` | L200 |
+| `\| 每日汇总表 \| `daily_summary` \| 预计算的每日四大指标 \| 所有核心指标 \| 日维度（全局） \|` | L208 |
+| `\| 每周汇总表 \| `weekly_summary` \| 预计算的每周四大指标 \| 所有核心指标 \| 周维度（全局） \|` | L210 |
+| `\| 每月汇总表 \| `monthly_summary` \| 预计算的每月四大指标 \| 所有核心指标 \| 月维度（全局） \|` | L211 |
+| `2. **日汇总层**（`daily_summary`, `daily_app_summary`）` | L223 |
+| `3. **周/月/年汇总层**（`weekly_summary`, `monthly_summary`, `yearly_summary`）` | L228 |
+| `\| 历史日期统计 \| `daily_summary`, `daily_app_summary` \| 查询日汇总表 \|` | L238 |
+| `\| 本周/本月统计 \| 实时聚合 `daily_summary` \| 灵活计算跨周期 \|` | L239 |
+| `\| 历史周/月统计 \| `weekly_summary`, `monthly_summary` \| 查询预计算汇总表 \|` | L240 |
+| `\| 自定义时间范围 \| 聚合 `daily_summary` \| 按日汇总表聚合 \|` | L241 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>非常好！术语统一表已经非常完整了，包含了：
+1. 四大核心指标
+2. 基础数据模型（AppSession, ScreenEvent）
+3. 查询模型（StatsQuery, TimeRange）
+4. 枚举类型（TimeDimension, StatScope, PeriodType等）
+5. 数据表结构（包括日/周/月/年汇总表）
+
+现在术语统一表_v2.2.md已经更新完成。接下来我需要更新数据模型设计方案_v2.md，确保它与术语统一表保持一致。</details></think>
+
+---
+
+完美！术语统一表已经包含了完整的多维度查询支持。现在让我更新TODO并开始修改数据模型设计方案：
+
+---
+
+Tool use: **todo_write**
+
+## Todo List
+
+- [x] 读取并分析PRD完整需求，理解新增的多维度查询能力
+- [x] 分析需要新增的专业术语和字段定义
+- [x] 更新术语统一表_v2.2.md，增加时间维度相关术语
+- [-] 更新数据模型设计方案_v2.md，增加多维度查询支持
+- [ ] 验证文档内部一致性（术语、字段命名、数据类型）
+- [ ] 验证文档间一致性（两个文档术语、模型定义对齐）
+- [ ] 检查是否有孤立未使用的字段
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "^## |^### [0-9]" in "需求和设计/03_数据模型设计方案_v2.md" • 20 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `## 🎯 设计原则` | L10 |
+| `## 🏗️ 数据库架构` | L20 |
+| `## 📊 详细表结构` | L148 |
+| `### 1. 应用会话表（app_session）` | L150 |
+| `### 2. 应用使用明细表（app_usage_detail）` | L210 |
+| `### 3. 屏幕事件表（screen_event）` | L240 |
+| `### 4. 通知事件表（notification_event）` | L273 |
+| `### 5. 每日汇总表（daily_summary）` | L306 |
+| `### 6. 用户目标表（user_goal）` | L348 |
+| `### 7. 应用元数据表（app_metadata）` | L388 |
+| `## 🔍 查询示例` | L428 |
+| `### 1. 今日四大核心指标查询` | L430 |
+| `### 2. 应用分类统计` | L471 |
+| `### 3. 最活跃应用统计` | L504 |
+| `## ⚠️ 数据一致性规则` | L548 |
+| `### 1. 最小时长阈值处理` | L550 |
+| `### 2. 统计查询一致性` | L573 |
+| `## 🔧 数据库升级策略` | L607 |
+| `## 📚 相关文档` | L647 |
+| `## 📝 版本历史` | L661 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+
+
+好的，我看到数据模型设计方案包含了7张表，但还缺少：
+1. weekly_summary - 每周汇总表
+2. monthly_summary - 每月汇总表
+3. yearly_summary - 每年汇总表
+4. daily_app_summary - 每日应用汇总表
+
+还需要增加多维度查询的相关内容。让我先更新版本号和更新说明。</details></think>
+
+---
+
+The string to replace was not found in the file.
+
+---
+
+<think><details><summary>Thought Process</summary>看起来数据模型文档已经更新了版本号。让我检查文档中是否已经有weekly_summary等表的定义。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "weekly_summary|monthly_summary|yearly_summary|daily_app_summary" in "需求和设计/03_数据模型设计方案_v2.md" • 9 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `app_session \|\|--o\{ daily_app_summary : contributes_to` | L28 |
+| `daily_summary \|\|--o\{ weekly_summary : aggregates_to` | L30 |
+| `daily_summary \|\|--o\{ monthly_summary : aggregates_to` | L31 |
+| `daily_summary \|\|--o\{ yearly_summary : aggregates_to` | L32 |
+| `app_metadata \|\|--o\{ daily_app_summary : references` | L35 |
+| `daily_app_summary \{` | L84 |
+| `weekly_summary \{` | L94 |
+| `monthly_summary \{` | L107 |
+| `yearly_summary \{` | L118 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>很好！数据模型设计方案已经包含了周/月/年汇总表和daily_app_summary表。现在让我检查详细表结构部分是否已经完整定义了这些表。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "^### [0-9]|应用元数据表" in "需求和设计/03_数据模型设计方案_v2.md" • 13 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### 1. 应用会话表（app_session）` | L150 |
+| `### 2. 应用使用明细表（app_usage_detail）` | L210 |
+| `### 3. 屏幕事件表（screen_event）` | L240 |
+| `### 4. 通知事件表（notification_event）` | L273 |
+| `### 5. 每日汇总表（daily_summary）` | L306 |
+| `### 6. 用户目标表（user_goal）` | L348 |
+| `### 7. 应用元数据表（app_metadata）` | L388 |
+| `### 1. 今日四大核心指标查询` | L430 |
+| `### 2. 应用分类统计` | L471 |
+| `### 3. 最活跃应用统计` | L504 |
+| `### 1. 最小时长阈值处理` | L550 |
+| `### 2. 统计查询一致性` | L573 |
+| `7. AppMetadata - 应用元数据表` | L626 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>看起来详细表结构只定义到了第7张表（应用元数据表），还缺少：
+8. daily_app_summary - 每日应用汇总表
+9. weekly_summary - 每周汇总表
+10. monthly_summary - 每月汇总表
+11. yearly_summary - 每年汇总表
+
+让我在应用元数据表之后添加这些表的详细定义。</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "应用元数据表|^---$|^## 🔍 查询示例" in "需求和设计/03_数据模型设计方案_v2.md" • 3 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `### 7. 应用元数据表（app_metadata）` | L388 |
+| `## 🔍 查询示例` | L428 |
+| `7. AppMetadata - 应用元数据表` | L626 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>
+
+
+
+找到了！应用元数据表定义在第388行，后面是分隔线，然后是查询示例部分。我需要在分隔线之前添加新的表定义。</details></think>
+
+---
+
+_**User (2025-10-14 10:38Z)**_
+
+设计不要有kotlin代码，可以有mermaid图以及UML等表示交互信息，业务逻辑。
+
+---
+
+_**Assistant (claude-4.5-sonnet-thinking)**_
+
+<think><details><summary>Thought Process</summary>用户要求设计文档中不要有Kotlin代码，但可以使用mermaid图和UML来表示交互信息和业务逻辑。我需要：
+
+1. 从术语统一表中删除Kotlin代码示例
+2. 用mermaid图或其他图形方式替代
+3. 继续完成数据模型设计方案的更新
+
+让我先修改术语统一表，把Kotlin代码改成更抽象的表示方式。</details></think>
+
+---
+
+好的，我理解了。我会移除Kotlin代码示例，改用mermaid图和UML等方式来表达业务逻辑。让我修改刚才添加的内容：
+
+---
+
+Tool use: **search_replace**
+
+---
+
+
 
 ---
 
